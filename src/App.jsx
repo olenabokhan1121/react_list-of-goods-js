@@ -22,6 +22,10 @@ export const App = () => {
   const [sortByAlphabet, setSortByAlphabet] = useState('inactive');
   const [sortByLength, setSortByLength] = useState('inactive');
   const [reverseArr, setReverseArr] = useState('inactive');
+  const isResetActive =
+    sortByAlphabet !== 'inactive' ||
+    sortByLength !== 'inactive' ||
+    reverseArr !== 'inactive';
   const calculatedGoods = sortByParam(goodsFromServer, {
     byAlphabet: sortByAlphabet,
     byLength: sortByLength,
@@ -86,10 +90,7 @@ export const App = () => {
           <button
             type="button"
             className={cn('button is-danger', {
-              'is-light':
-                sortByAlphabet === 'inactive' &&
-                sortByLength === 'inactive' &&
-                reverseArr === 'inactive',
+              'is-light': !isResetActive,
             })}
             onClick={handleReset}
           >
