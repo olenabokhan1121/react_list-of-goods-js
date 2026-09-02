@@ -85,7 +85,12 @@ export const App = () => {
           reverseArr !== 'inactive') && (
           <button
             type="button"
-            className="button is-danger is-light"
+            className={cn('button is-danger', {
+              'is-light':
+                sortByAlphabet === 'inactive' &&
+                sortByLength === 'inactive' &&
+                reverseArr === 'inactive',
+            })}
             onClick={handleReset}
           >
             Reset
